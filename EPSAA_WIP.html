@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+
+    <meta charset="utf-8">
+    <title> Fiona Bosquier Portfolio </title>
+
+    <!-- Lien vers la feuille de styles CSS -->
+    <link href="EPSAA_WIP.css" rel="stylesheet">
+    <!-- Assure que la mise en page est responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+  </head>
+
+
+
+  <body>
+
+        <!-- Header -->
+    <header class="menu">
+      <div class="header-menu">
+
+    <!-- Menu gauche -->
+    <div class="header-left">
+      <a href="../index.html">
+        <span class="Fiona">Fiona Bosquier</span>
+      </a>
+      <span class="Graphiste"> Graphiste Print / Web </span>
+    </div>
+
+    <!-- Menu droit -->
+    <nav class="header-right">
+      <ul class="nav">
+        <li class="Projets"> Projets </li>
+        <li><a href="/EPSAA_WIP.html"> Epsaa </a></li>
+        <li><a href="/Infos/Infos.html"> Infos </a></li>
+      </ul>
+    </nav>
+
+      </div>
+    </header>
+
+          <div class="marge">
+  <h1>Projet EPSAA</h1>
+</div>
+
+    <div class="container_projet">
+
+      <div class="colonne_gauche">
+<div class="colonne_images">
+  <div>(  Galerie  )</div>
+
+  <a href="#image-1">
+    <img src="/Projets/EPSAA/Bosquier_Fiona_Rendu.png" alt="Projet 8">
+  </a>
+
+  <a href="#image-2">
+    <img src="/Projets/EPSAA/TOUCH.PNG" alt="Projet 7">
+  </a>
+
+
+  <div>( 2 )</div>
+</div>
+      </div>
+
+      <div class="colonne_droite">
+
+        <div class="ligne_haut">
+         <div class="bloc_texte">
+         <p> (Expérimentations) <br>
+         2026 • Multi-support </p>
+         </div>
+
+        <div class="bloc_texte">
+    
+        </div>
+
+        <div class="bloc_texte">
+        <p> Panorama des différents projets réalisés à L'EPSAA. <br>
+			Page en cours de création.
+		</p>
+        </div>
+        </div>
+
+        <div class="ligne_bas">
+           <img id="image-1" src="/Projets/EPSAA/Bosquier_Fiona_Rendu.png" alt="Projet 8">
+           <img id="image-2" src="/Projets/EPSAA/TOUCH.PNG" alt="Projet 7">
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="bas">
+      <div> Tous droits réservés </div>
+      <div> Fiona Bosquier </div>
+    </footer>
+
+  </body>
+
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const galerie = document.querySelector(".ligne_bas");
+  const miniatures = document.querySelectorAll(".colonne_images a");
+  const images = [...galerie.querySelectorAll("img")];
+
+  // Navigation au clic sur les miniatures
+  miniatures.forEach(miniature => {
+    miniature.addEventListener("click", event => {
+      event.preventDefault();
+
+      const idImage = miniature.getAttribute("href");
+      const image = document.querySelector(idImage);
+
+      if (!image) return;
+
+      galerie.scrollTo({
+        top: image.offsetTop,
+        behavior: "smooth"
+      });
+    });
+  });
+
+  // Mise à jour de la miniature active
+  function actualiserMiniatures() {
+
+    const position = galerie.scrollTop + 5;
+    let indexActif = 0;
+
+    images.forEach((image, index) => {
+      if (image.offsetTop <= position) {
+        indexActif = index;
+      }
+    });
+
+    miniatures.forEach((miniature, index) => {
+      miniature.classList.toggle("active", index === indexActif);
+    });
+  }
+
+  galerie.addEventListener("scroll", actualiserMiniatures);
+
+  images.forEach(image => {
+    image.addEventListener("load", actualiserMiniatures);
+  });
+
+  actualiserMiniatures();
+
+});
+
+</script>
+
+
+
+</html>

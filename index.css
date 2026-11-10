@@ -1,0 +1,408 @@
+/* ======================== */
+/*   ROOTS                  */
+/* ======================== */
+
+:root{
+  /* -------- Couleurs -------- */
+  --color-text: black;
+  --color-text-survol: #A4A4A4;
+  --color-projets: #A4A4A4;
+
+  --color-hermes: #FE4251;
+  --color-axolotl: #575150;
+  --color-terrestre: #AA7DCA;
+  --color-komik: #49A9E8;
+  --color-bompard: #EACA3B;
+  --color-ppn: #01008C;
+  --color-ddd: #FC8F2F;
+  --color-moonlight: #4DC3B4;
+
+  /* -------- Typographies -------- */
+  --font-body: "Antonio", sans-serif;
+  --font-design: "Lato", sans-serif;
+
+  /* -------- Tailles -------- */
+  --fs-title: 1rem;
+  --fs-menu: 5.3rem;
+  --fs-description: 0.9rem;
+  --fs-bas: 0.8rem;
+
+  /* -------- Graisses -------- */
+  --fw-thin: 100;
+  --fw-regular: 400;
+  --fw-medium: 600;
+  --fw-bold: 700;
+
+  /* -------- Hauteurs -------- */
+
+  --header-h: 60px;
+  --footer-h: 32px;
+
+  --menu-padding-y: 16px;
+  --menu-gap: 0.04em;
+
+  --available-h: calc(100dvh - var(--header-h) - var(--footer-h) - (var(--menu-padding-y) * 2));
+
+  /* 8 projets à faire tenir dans la hauteur */
+  --fs-menu: clamp(2rem, calc(var(--available-h) / 8.6), 5.3rem);
+
+  --fs-description: clamp(0.7rem, calc(var(--fs-menu) * 0.17), 0.9rem);
+
+  /* -------- Composition Menu -------- */
+  --type-block-w: 65rem;
+  --type-block-x: 0rem;
+  --type-block-y: 0rem;
+  --type-line-gap: 0px;
+}
+
+
+/* ======================== */
+/*   STYLE GLOBAL           */
+/* ======================== */
+
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+header,
+.main-menu,
+footer{
+  position: relative;
+  z-index: 10;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100dvh;
+}
+
+body {
+  background-color: transparent;
+  overflow: hidden; /* on garde le body fixe */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-design);
+}
+
+header, footer, .main-menu{
+  position: fixed; /* tu l'as déjà */
+  z-index: 10;     /* au-dessus du background */
+}
+
+.header-menu{
+  background-color: transparent; /* au lieu de white */
+}
+
+.main-menu{
+  background-color: transparent; /* au lieu de white */
+}
+
+
+
+/* ======================== */
+/*   HEADER                 */
+/* ======================== */
+
+header {
+    background-color: transparent;
+    height: var(--header-h);
+    width: 100%;
+    padding: 1%;
+    margin: 0;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    overflow: hidden;
+
+    font-family: var(--font-design);
+    font-size: var(--fs-title);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.5%;
+}
+
+
+
+/* ======================== */
+/*   MENU HEADER            */
+/* ======================== */
+
+.header-menu {
+  background-color: transparent;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
+  gap: 50px;
+}
+
+.header-right .nav {
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
+  gap: 50px;
+}
+
+.nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.nav a:hover {
+  text-decoration: none;
+  color: var(--color-text-survol);
+}
+
+.Projet li{
+  color: var(--color-text-survol);
+}
+
+.Projets{
+  color: var(--color-projets);
+}
+
+
+
+/* ======================== */
+/*   CONTAINER              */
+/* ======================== */
+
+.container {
+  padding: 1%;
+  margin: 0;
+}
+
+.main-menu {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  top: var(--header-h);
+  bottom: var(--footer-h);
+  left: 0;
+  right: 0;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  position: fixed;
+  gap: 24px;
+}
+
+.colonne-menu{
+  position: relative;
+  z-index: 100;
+  width: min(100%, var(--type-block-w));
+  height: 100%;
+  padding: var(--menu-padding-y) 1%;
+  margin: 0;
+  overflow: hidden;
+}
+
+
+
+/* ======================== */
+/*   MENU PROJETS DROIT     */
+/* ======================== */
+
+.colonne-menu {
+  overflow: visible;
+  min-height: 0;
+  grid-column: 1;
+  padding: 2% 1%; 
+  margin: 0;
+  top: 0;
+  z-index: 100; 
+}
+
+
+
+/* ======================== */
+/*   MENU TEXTES PROJETS    */
+/* ======================== */
+
+.menu-projet {
+  background-color:transparent;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  overflow: hidden;
+
+  display: grid;
+  justify-items: start;
+  gap: var(--menu-gap);
+
+  font-family: var(--font-body);
+  font-size: var(--fs-menu);
+  font-weight: var(--fw-thin);
+  color: var(--color-text);
+
+  transform: translate(var(--type-block-x), var(--type-block-y));
+}
+
+.menu-projet::-webkit-scrollbar {
+  display: none;
+}
+
+.project {
+  padding: 0;
+  line-height: 1;
+  display: block; 
+  white-space: nowrap;
+  
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.1em;
+
+  transform: translate(var(--x, 0em), var(--y, 0em));
+  margin-top: var(--mt, 0em);
+}
+
+.description {
+  font-family: var(--font-title);
+  font-size: var(--fs-description);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-survol);
+}
+
+.description{
+  color: inherit;
+}
+
+.menu-projet.is-hovering .project{
+  color: var(--color-text-menu) !important;
+}
+
+/* Le projet actif garde sa couleur */
+.menu-projet.is-hovering .project.active{
+  color: inherit !important;
+}
+
+/* -------- Compositions Typographiques -------- */
+.project.p1 { --x: 4.1em; --mt: 0em; }
+.project.p2 { --x: 2.59em; --mt: -0.066em; }
+.project.p3 { --x: 0.97em; --mt: -0.066em; }
+.project.p4 { --x: 3.27em; --mt: -0.066em; }
+.project.p5 { --x: 3.9em; --mt: -0.066em; }
+.project.p6 { --x: 3.51em; --mt: -0.066em; }
+.project.p7 { --x: 3.55em; --mt: -0.066em; }
+.project.p8 { --x: 1.76em; --mt: -0.066em; }
+
+/* -------- Couleurs Typographiques -------- */
+.project.p1.active { color: var(--color-hermes); }
+.project.p2.active { color: var(--color-bompard); }
+.project.p3.active { color: var(--color-terrestre); }
+.project.p4.active { color: var(--color-axolotl); }
+.project.p5.active { color: var(--color-ppn); }
+.project.p6.active { color: var(--color-ddd); }
+.project.p7.active { color: var(--color-komik); }
+.project.p8.active { color: var(--color-moonlight); }
+
+.colonne-preview .image{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 100ms ease; /* fluide */
+}
+
+.colonne-preview {
+  position: fixed;
+  inset: 0;              /* prend tout l'écran */
+  z-index: 0;            /* tout en arrière */
+  overflow: hidden;
+}
+
+.colonne-preview .image.active{
+  opacity: 1;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* ======================== */
+/*   MENU PROJETS GAUCHE    */
+/* ======================== */
+
+.image {
+  height: 100%;
+  width: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 100ms ease;
+}
+
+.image.active{
+  opacity: 1;
+}
+
+
+/* ======================== */
+/*   FOOTER                 */
+/* ======================== */
+
+footer {
+  background-color: transparent;
+  height: var(--footer-h);
+  width: 100%;
+  padding: 1% 1%;
+  margin: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+
+  font-family: var(--font-design);
+  font-size: var(--fs-bas);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  letter-spacing: 0.5%;
+}
