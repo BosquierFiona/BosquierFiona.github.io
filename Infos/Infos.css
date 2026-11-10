@@ -1,0 +1,232 @@
+/* ======================== */
+/*   ROOTS                  */
+/* ======================== */
+
+:root {
+  /* -------- Couleurs -------- */
+  --color-text: black;
+  --color-text-survol: #A4A4A4;
+  --color-projets: #A4A4A4;
+
+  --color-hermes: #FE4251;
+  --color-axolotl: #575150;
+  --color-terrestre: #AA7DCA;
+  --color-komik: #49A9E8;
+  --color-bompard: #EACA3B;
+  --color-ppn: #01008C;
+  --color-ddd: #FC8F2F;
+  --color-moonlight: #4DC3B4;
+
+  /* -------- Typographies -------- */
+  --font-body: "Antonio", sans-serif;
+  --font-design: "Lato", sans-serif;
+
+  /* -------- Tailles -------- */
+  --fs-title: 1rem;
+  --fs-menu: 5.3rem;
+  --fs-description: 0.9rem;
+  --fs-bas: 0.8rem;
+  --fs-liens: 2rem;
+
+  /* -------- Graisses -------- */
+  --fw-thin: 100;
+  --fw-regular: 400;
+  --fw-medium: 600;
+  --fw-bold: 700;
+
+  /* -------- Hauteurs -------- */
+  --header-h: 60px;
+  --footer-h: 32px;
+
+  /* -------- Composition Menu -------- */
+  --type-block-w: 32rem;
+  --type-block-x: clamp(1rem, 8vw, 3rem);
+  --type-block-y: 0rem;
+  --type-line-gap: 0px;
+  --legende-x: 0rem;
+  --legende-y: 0rem;
+}
+
+
+
+/* ======================== */
+/*   STYLE GLOBAL           */
+/* ======================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+header, .main-menu, footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: transparent;
+}
+
+
+
+/* ======================== */
+/*   HEADER                 */
+/* ======================== */
+
+header {
+  top: 0;
+  height: var(--header-h);
+  padding: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: var(--font-design);
+  font-size: var(--fs-title);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.5%;
+}
+
+
+
+/* ======================== */
+/*   MENU HEADER            */
+/* ======================== */
+
+.header-menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: inline-flex; gap: 50px;
+}
+
+.nav{
+  display: inline-flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 50px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.nav a:hover {
+  color: var(--color-text-survol);
+}
+
+.Infos {
+  color: var(--color-projets);
+}
+
+.Fiona {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.Fiona:hover {
+  color: var(--color-text-survol);
+  text-decoration: none;
+}
+
+
+
+/* ======================== */
+/*   CONTAINER              */
+/* ======================== */
+
+.main-menu {
+  top: var(--header-h);
+  bottom: var(--footer-h);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.colonne-menu{
+  padding: 1% 1%;
+  width: min(100%, 70rem); /* <- augmente la zone (avant : 32rem) */
+  overflow: visible;
+}
+
+.menu-projet{
+  display: grid;
+
+  /* 2 colonnes qui prennent juste la largeur du contenu */
+  grid-template-columns: max-content max-content;
+
+  /* espace horizontal entre les colonnes (réglable) */
+  column-gap: clamp(0.5rem, 3vw, 3rem);
+
+  /* espace vertical entre ligne 1 et ligne 2 (réglable) */
+  row-gap: clamp(3rem, 8vh, 6rem);
+
+  align-content: start;
+  justify-items: start;
+
+  padding-top: clamp(3rem, 8vh, 6rem);
+  transform: translate(var(--type-block-x), var(--type-block-y));
+
+  font-family: var(--font-body);
+  font-size: var(--fs-liens);
+  font-weight: var(--fw-thin);
+}
+
+.project.p1 { grid-column: 1; grid-row: 1; }
+.project.p2 { grid-column: 2; grid-row: 1; }
+.project.p3 { grid-column: 1; grid-row: 2; }
+.project.p4 { grid-column: 2; grid-row: 2; }
+
+.social-item {
+  color: inherit;
+  text-decoration: none;
+}
+
+.social-item:hover {
+  color: var(--color-text-survol);
+}
+
+.legende{
+  grid-column: 1 / -1;
+  margin-top: clamp(2rem, 6vh, 4rem);
+
+  width: min(100%, 75ch); /* largeur de lecture agréable */
+}
+
+.legende .texte {
+  font-family: var(--font-body);
+  font-size: var(--fs-title);
+  font-weight: var(--fw-thin);
+  line-height: 1.35;
+  margin: 0;
+}
+
+
+
+/* ======================== */
+/*   FOOTER                 */
+/* ======================== */
+
+footer {
+  bottom: 0;
+  height: var(--footer-h);
+  padding: 1%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: var(--font-design);
+  font-size: var(--fs-bas);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  letter-spacing: 0.5%;
+}
